@@ -9,8 +9,6 @@ const Conversations = () => {
   const { loading, conversations } = UseGetConversations();
   console.log('conversations', conversations);
   
-  
-  
   return (
     <div className='py-2 flex flex-col overflow-auto'>
       {conversations.map((conversation, index) => (
@@ -18,7 +16,7 @@ const Conversations = () => {
           key={conversation._id}
           conversation={conversation}
           emoji={getRandomEmoji()}
-          lastIdx={index === conversations.length - 1}
+          index={index === conversations.length - 1}
         />
       ))}
 

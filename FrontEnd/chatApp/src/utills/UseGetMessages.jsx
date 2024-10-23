@@ -26,9 +26,9 @@ const useGetMessages = () => {
         const data = res.data;
 
         if (data.error) throw new Error(data.error);
-        setMessages(data.messages);
+        setMessages(data);
       } catch (error) {
-        toast.error(error.response?.data?.message || error.message);
+        toast.error(error.message);
       } finally {
         setLoading(false);
       }
@@ -37,6 +37,6 @@ const useGetMessages = () => {
     if (selectedConversation?._id) getMessages();
   }, [selectedConversation?._id, setMessages]);
 
-  return {   messages ,loading };
+  return {  messages ,loading };
 };
 export default useGetMessages;
