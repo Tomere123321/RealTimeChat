@@ -2,11 +2,14 @@ import { useEffect, useRef } from "react";
 import useGetMessages from "../utills/UseGetMessages";
 import LoadingMessages from "./LoadingMessages";
 import Message from "./Message";
+import UseListenMessages from "../utills/UseListenMessages";
 
 const Messages = () => {
   const { messages, loading } = useGetMessages();
   const showLastMessage = useRef()
+  UseListenMessages()
   const messageList = Array.isArray(messages) ? messages : [];
+  
 
   useEffect(() => {
 	setTimeout(() => {
