@@ -2,33 +2,35 @@ import { useEffect, useRef } from "react";
 import useGetMessages from "../utills/UseGetMessages";
 import LoadingMessages from "./LoadingMessages";
 import Message from "./Message";
-// import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
-	const { messages, loading } = useGetMessages();
-	const messageArray = messages.messages || [];
-	// useListenMessages();
-	// const lastMessageRef = useRef();
+  const { messages, loading } = useGetMessages();
+  const showLastMessage = useRef()
+  const messageList = Array.isArray(messages) ? messages : [];
 
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
-	// 	}, 100);
-	// }, [messages]);
+  useEffect(() => {
+	setTimeout(() => {
+		showLastMessage.current?.scrollIntoView({ behavior: "smooth" });
+	}, 100);
+}, [messageList]);
 
-	return (
-		<div className='px-4 flex-1 overflow-auto'>
-			{!loading &&
-				messageArray.length > 0 &&
-				messageArray.map((message) => (
-					<Message key={message._id} message={message} />  
-				))}
+ 
+return (
+	<div className='px-4 flex-1 overflow-auto'>
+		{!loading &&
+			messageList.length > 0 &&
+			messageList.map((message) => (
+				<div key={message._id} ref={showLastMessage}>
+					<Message message={message} />
+				</div>
+			))}
 
-			{loading && [...Array(3)].map((_, idx) => <LoadingMessages key={idx} />)}
-			{!loading && messageArray.length === 0 && (
-				<p className='text-center'>Send a message to start the conversation</p>
-			)}
-		</div>
-	);
+		{loading && [...Array(3)].map((_, idx) => <LoadingMessages key={idx} />)}
+		{!loading && messageList.length === 0 && (
+			<p className='text-center text-gray-400'>Send a message to start the conversation</p>
+		)}
+	</div>
+);
 };
+
 export default Messages;

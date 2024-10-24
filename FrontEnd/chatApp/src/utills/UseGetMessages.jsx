@@ -24,9 +24,10 @@ const useGetMessages = () => {
           }
         );
         const data = res.data;
+      
 
         if (data.error) throw new Error(data.error);
-        setMessages(data);
+        setMessages(Array.isArray(data.messages) ? data.messages : []);
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -40,3 +41,5 @@ const useGetMessages = () => {
   return {  messages ,loading };
 };
 export default useGetMessages;
+
+

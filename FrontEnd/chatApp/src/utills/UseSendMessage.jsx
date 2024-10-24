@@ -11,6 +11,7 @@ const useSendMessage = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
+     
       const response = await axios.post(
         `http://localhost:8000/messages/send/${selectedConversation._id}`,
         { message },
@@ -23,10 +24,16 @@ const useSendMessage = () => {
       );
 
       const data = response.data;
+    
 
-      setMessages([...messages, data]);
+      if (Array.isArray(messages)) {
+        setMessages([...messages, data]);
+      } else {
+        setMessages([data]);
+      }
     } catch (error) {
       toast.error(error.message);
+      console.log('error in Send Message', error.message);
     } finally {
       setLoading(false);
     }
@@ -34,4 +41,5 @@ const useSendMessage = () => {
 
   return { sendMessage, loading };
 };
+
 export default useSendMessage;
