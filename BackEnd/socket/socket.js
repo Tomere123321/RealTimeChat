@@ -7,16 +7,16 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:8000",
+    origin: "http://localhost:5174",
     methods: ["GET", "POST"],
   },
 });
 
- const getReceiverSocketId = (receiverId) => {
+const getReceiverSocketId = (receiverId) => {
   return usersSocketMap[receiverId];
 }
 
-const usersSocketMap = {}; //{userId: socketId}
+const usersSocketMap = {}; 
 
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);

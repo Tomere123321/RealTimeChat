@@ -1,8 +1,9 @@
+const express = require('express')
+const app = express();
 let PORT =  8000;
+// const socket = require("socket.io");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const { app, server } = require("./socket/socket.js")
-const express = require("express");
 
 mongoose.connect("mongodb://127.0.0.1:27017/realTimeChat").then(() => console.log("Connected to DB"));
 
@@ -18,7 +19,7 @@ app.use("/messages", massageController)
 const userController = require("./Controller/userController")
 app.use("/users", userController)
 
-// http://localhost:8000
-server.listen(PORT, () => {
+// http://localhost:8000/
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
