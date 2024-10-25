@@ -30,9 +30,8 @@ const sendMessage = async (req, res) => {
     });
 
     await newMessage.save();
-    console.log( 'message saved:',newMessage);
-    
    
+    
     conversation.messages.push(newMessage._id);
     await conversation.save();
 
@@ -63,7 +62,7 @@ const getMessages = async (req, res) => {
 
     const messages =  conversation.messages
 
-    res.status(200).json({messages})
+    res.status(200).json (messages);
 
 
   } catch (e) {
