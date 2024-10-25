@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const conversationSchema = new mongoose.Schema({
     participants: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'User'
     }],
     messages: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'message',
+        ref: 'Message',
         default: []
     }]
 }, {timestamps:true});
@@ -15,4 +15,3 @@ const conversationSchema = new mongoose.Schema({
 const conversationModel = mongoose.model("conversation",conversationSchema)
 
 module.exports = conversationModel;
-
