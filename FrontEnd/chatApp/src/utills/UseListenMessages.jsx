@@ -26,7 +26,11 @@ import React, { useEffect } from 'react'
 import { useSocketContext } from '../Context/SocketContext'
 import UseConversation from '../Zustand/UseConversation'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import notificationSound from "../assets/sounds/notification.mp3";
+=======
+
+>>>>>>> parent of b7ba2b7 (Adding Sound)
 =======
 
 >>>>>>> parent of b7ba2b7 (Adding Sound)
