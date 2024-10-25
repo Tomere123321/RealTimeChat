@@ -2,6 +2,7 @@ const express = require("express");
 const protectRoute = require("../middleware/protectRoute");
 const conversationModel = require("../Model/conversationModel");
 const messageModel = require("../Model/messageModel");
+const { getReceiverSocketId, io } = require("../socket/socket");
 
 const router = express.Router();
 
@@ -11,11 +12,7 @@ const sendMessage = async (req, res) => {
     const { id: receiverId } = req.params; 
     const senderId = req.user._id;
 
-    console.log("Sender ID:", senderId);
-    console.log("Receiver ID:", receiverId);
-    console.log("Message:", message);
 
-   
     let conversation = await conversationModel.findOne({
       participants: { $all: [senderId, receiverId] },
     });
@@ -26,41 +23,32 @@ const sendMessage = async (req, res) => {
       });
     }
 
-   
-    const newMessage =  new messageModel({
+    const newMessage = new messageModel({
       senderId,
       receiverId,
       message,
-  })
+    });
 
-  await newMessage.save();
-  console.log("New message saved:", newMessage);
-  
-  // if (newMessage) {
-  //   conversation.messages.push(newMessage._id);
-  // }
-
-  conversation.messages.push(newMessage._id);
-  await conversation.save();
+    await newMessage.save();
+    console.log( 'message saved:',newMessage);
     
-    await conversation.save();
-    await newMessage.save()
    
-    console.log("New message saved:", newMessage);
-
     conversation.messages.push(newMessage._id);
     await conversation.save();
-  
-    res.status(201).json(newMessage);
 
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
+
+    res.status(201).json(newMessage);
   } catch (e) {
-    console.log("error in Send Massage Controller:", e.message);
+    console.log("error in Send Message Controller:", e.message);
     res.status(500).json({ error: "internal Server Error" });
   }
 };
 
 router.post("/send/:id", protectRoute, sendMessage);
-<<<<<<< HEAD
 
 const getMessages = async (req, res) => {
   try {
@@ -87,5 +75,3 @@ const getMessages = async (req, res) => {
 router.get("/:id", protectRoute, getMessages);
 
 module.exports = router;
-=======
->>>>>>> parent of a2cbf06 (Socket changes)
