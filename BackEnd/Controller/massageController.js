@@ -30,9 +30,7 @@ const sendMessage = async (req, res) => {
     });
 
     await newMessage.save();
-    console.log( 'message saved:',newMessage);
-    
-   
+  
     conversation.messages.push(newMessage._id);
     await conversation.save();
 
@@ -49,29 +47,5 @@ const sendMessage = async (req, res) => {
 };
 
 router.post("/send/:id", protectRoute, sendMessage);
-
-const getMessages = async (req, res) => {
-  try {
-    const { id:userToChatId } = req.params;
-    const senderId = req.user._id;
-
-    const conversation = await conversationModel.findOne({
-      participants: { $all: [senderId, userToChatId] },
-    }).populate("messages");
-
-    if (!conversation) { return res.status(200).json([]);}
-
-    const messages =  conversation.messages
-
-    res.status(200).json({messages})
-
-
-  } catch (e) {
-    console.log("error in get Messages Controller:", e.message);
-    res.status(500).json({ error: "internal Server Error" });
-  }
-}
-
-router.get("/:id", protectRoute, getMessages);
 
 module.exports = router;
