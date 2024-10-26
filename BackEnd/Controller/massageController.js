@@ -30,7 +30,6 @@ const sendMessage = async (req, res) => {
     });
 
     await newMessage.save();
-    console.log( 'message saved:',newMessage);
     
    
     conversation.messages.push(newMessage._id);

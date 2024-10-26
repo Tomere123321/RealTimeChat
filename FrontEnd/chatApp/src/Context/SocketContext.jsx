@@ -15,7 +15,7 @@ const SocketContext = createContext();
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:5173", {
+      const socket = io("http://localhost:8000", {
         query: {
           userId: authUser._id,
         },
