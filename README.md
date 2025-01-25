@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Real Time Chat App 👋</h1>
+<h1 align="center">Welcome to Real Time Chat APP 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
@@ -6,7 +6,7 @@
   </a>
 </p>
 
-> Real Time Chat App |  Mern && socket.io && JWT, zuatand and More 
+> Real Time Chat Application | MERN, socket.io, JWT, Zustand And more! 
 
 ## Install
 
@@ -22,10 +22,10 @@ npm run test
 
 ## Author
 
-👤 **Tome Eliyahu**
+👤 **Tomer Eliyahu**
 
 * Github: [@Tomere123321](https://github.com/Tomere123321)
-* LinkedIn: [@Tomer Eliyahu](https://linkedin.com/in/Tomer Eliyahu)
+* LinkedIn: [@Tomer Eliyahu](https://linkedin.com/in/TomerEliyahu)
 
 ## Show your support
 
