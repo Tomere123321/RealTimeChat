@@ -6,7 +6,7 @@ A Real-Time Chat App Where You Can Send and Receive Messages.
 ---
 
 ## 🖼️ Screenshot
-![Screenshot of the Project](FrontEnd/src/assets/ProjectScreenShot.png)
+![Screenshot of the Project](FrontEnd/chatApp/src/assets/ProjectScreenShot.png)
 
 ---
 
