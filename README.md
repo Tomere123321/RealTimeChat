@@ -1,14 +1,4 @@
 <h1 align="center">Welcome to Real Time Chat APP 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
-    <img alt="License: (ISC)" src="https://img.shields.io/badge/License-(ISC)-yellow.svg" />
-  </a>
-</p>
-
-> Real Time Chat Application | MERN, socket.io, JWT, Zustand And more! 
-=======
-# 💬 Real-Time Chat Application 📱✨
 
 ## 🏷️ Project Title
 A Real-Time Chat App Where You Can Send and Receive Messages.
@@ -16,7 +6,7 @@ A Real-Time Chat App Where You Can Send and Receive Messages.
 ---
 
 ## 🖼️ Screenshot
-![Screenshot of the Project](./assets/ProjectScreenShot.png)
+![Screenshot of the Project](FrontEnd/src/assets/ProjectScreenShot.png)
 
 ---
 
@@ -44,7 +34,7 @@ This **Real-Time Chat Application** is a **full-stack web application** that ena
 
 * Github: [@Tomere123321](https://github.com/Tomere123321)
 * LinkedIn: [@Tomer Eliyahu](https://linkedin.com/in/TomerEliyahu)
-=======
+
 ---
 
 ## 🛠️ Technologies Used
