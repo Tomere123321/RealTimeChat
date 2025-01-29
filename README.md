@@ -54,7 +54,6 @@ This **Real-Time Chat Application** is a **full-stack web application** that ena
 - **JWT**: For secure token-based authentication.
 - **Bcrypt**: Password hashing for user security.
 - **Cors**: Enabling cross-origin resource sharing.
-- **Dotenv**: For managing environment variables.
 
 ---
 
